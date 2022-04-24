@@ -1,0 +1,13 @@
+{
+  "name": "calculator_eval",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node main.ts",
+    "start:dev": "nodemon main.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
