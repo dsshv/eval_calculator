@@ -34,8 +34,10 @@ export function evalFunc(mathExpression: string){
     }
 
     function parseString(newStr: string){
+        const MATH_SIGNS = "+-";
         while (parseNumber(newStr).length != newStr.length) {
             let argA: string = parseNumber(newStr);
+            console.log(argA);
             let argB: string = parseNumber(newStr.substring(argA.length + 1));
             let mathOperation: string = newStr[argA.length];
             let result = (mathOperation == '-') ? () => Number(argA) - Number(argB) :
@@ -51,14 +53,28 @@ export function evalFunc(mathExpression: string){
             let parsedNumber: string = str[0];
             if ((parsedNumber == '/') || (parsedNumber == '*')) return 'Error. Number cannot start with "/" or "*"';
             for (let i = 1; i < str.length; i++){
-                if (NUMBERS.indexOf(str[i]) != -1){
+                // if (!str[i]) break;
+                // if (NUMBERS.indexOf(str[i]) != -1){
+                //     parsedNumber += str[i];
+                // } else break;
+                if ((MATH_SIGNS.indexOf(str[--i]) != -1) && (MATH_SIGNS.indexOf(str[i]) != -1)){
                     parsedNumber += str[i];
-                } else break;
+                    continue;
+                }
+                if (!str[i] || NUMBERS.indexOf(str[i]) == -1) break;
+                parsedNumber += str[i];
             }
             return parsedNumber
         }
+        
+        function covertMathSign(str: string) {
+            let currentSign = str[0];
+            while (s){
+
+            }
+        }
     }
 }
-
-console.log(evalFunc('5 + (25 - 15) * 3 - (7 * 3)'))
+let argi = Number("-+5");
+console.log(argi);
 
